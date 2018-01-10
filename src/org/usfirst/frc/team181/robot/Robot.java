@@ -59,7 +59,6 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void autonomousPeriodic() {
-		System.out.println("This is a test of GIT");
 		switch (m_autoSelected) {
 			case kCustomAuto:
 				// Put custom auto code here
