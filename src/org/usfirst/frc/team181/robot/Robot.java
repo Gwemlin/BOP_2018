@@ -7,80 +7,92 @@
 
 package org.usfirst.frc.team181.robot;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.GenericHID;
+//import edu.wpi.first.wpilibj.SendableBase;
+//import edu.wpi.first.wpilibj.SolenoidBase;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.VictorSP;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the build.properties file in the
- * project.
- */
 public class Robot extends IterativeRobot {
-	private static final String kDefaultAuto = "Default";
-	private static final String kCustomAuto = "My Auto";
-	private String m_autoSelected;
-	private SendableChooser<String> m_chooser = new SendableChooser<>();
-
-	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
-	 */
+	
+	private Joystick m_arcadestick = new Joystick(0);
+	public static Joystick arcadestick = new Joystick(0);
+	private Timer m_timer = new Timer();
+	static DoubleSolenoid VarSolenoid = new DoubleSolenoid(0,0,1);
+	
+	static VictorSP m_frontLeft = new VictorSP(1);
+	static VictorSP m_frontRight = new VictorSP(0);
+	
+	private DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
+	static Encoder leftEncoder = new Encoder(2, 1, true, Encoder.EncodingType.k4X);
+	static Encoder rightEncoder = new Encoder(0, 3, false, Encoder.EncodingType.k4X);
+		
 	@Override
 	public void robotInit() {
-		m_chooser.addDefault("Default Auto", kDefaultAuto);
-		m_chooser.addObject("My Auto", kCustomAuto);
-		SmartDashboard.putData("Auto choices", m_chooser);
 	}
 
-	/**
-	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString line to get the auto name from the text box below the Gyro
-	 *
-	 * <p>You can add additional auto modes by adding additional comparisons to
-	 * the switch structure below with additional strings. If using the
-	 * SendableChooser make sure to add them to the chooser code above as well.
-	 */
 	@Override
 	public void autonomousInit() {
-		m_autoSelected = m_chooser.getSelected();
-		// autoSelected = SmartDashboard.getString("Auto Selector",
-		// defaultAuto);
-		System.out.println("Auto selected: " + m_autoSelected);
+		m_timer.reset();
+		m_timer.start();
 	}
 
-	/**
-	 * This function is called periodically during autonomous.
-	 */
 	@Override
 	public void autonomousPeriodic() {
-		System.out.println("This is a test of GIT");
-		switch (m_autoSelected) {
-			case kCustomAuto:
-				// Put custom auto code here
-				break;
-			case kDefaultAuto:
-			default:
-				// Put default auto code here
-				break;
+		// Drive for 2 seconds
+		if (m_timer.get() < 2.0) {
+			m_drive.arcadeDrive(0.5, 0.0); // drive forwards half speed
+		} else {
+			m_drive.stopMotor(); // stop robot
 		}
 	}
 
-	/**
-	 * This function is called periodically during operator control.
-	 */
 	@Override
-	public void teleopPeriodic() {
+	public void teleopInit() {
 	}
 
-	/**
-	 * This function is called periodically during test mode.
-	 */
+	private static void resetEncoders() { 
+		// TODO Auto-generated method stub
+	}
+
+	public static void highGear() {
+		resetEncoders();
+		VarSolenoid.set(DoubleSolenoid.Value.kForward);
+		//doubleSolenoid.set(true);
+		resetEncoders();
+	}
+	
+	public static void lowGear() {
+		resetEncoders();
+		VarSolenoid.set(DoubleSolenoid.Value.kReverse);
+		//doubleSolenoid.set();
+		resetEncoders();
+	}
+		
+	public static void ShiftGears() {
+		//If button 1 is pressed, and high gear is not yet enabled, run high gear method in DriveTrain class. Change State variable.
+		if(arcadestick.getRawButton(1) == true){
+			System.out.println("Engaging High Gear!");
+			highGear();
+			VarSolenoid.set(DoubleSolenoid.Value.kForward);			
+		}
+		else{
+			System.out.println("Going to Low Gear!");
+			lowGear();
+			VarSolenoid.set(DoubleSolenoid.Value.kReverse);}
+	}
+		
+	@Override
+	public void teleopPeriodic() {
+		m_drive.arcadeDrive(m_arcadestick.getY(), -m_arcadestick.getZ());
+		ShiftGears();
+	}
+
 	@Override
 	public void testPeriodic() {
 	}
