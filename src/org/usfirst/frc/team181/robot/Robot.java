@@ -20,10 +20,11 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Robot extends IterativeRobot {
 	
-	private Joystick m_arcadestick = new Joystick(0);
+	private Joystick m_drivestick = new Joystick(0);
+	private Joystick m_elevatorstick = new Joystick(1);
 	private Timer m_timer = new Timer();
 
-	DriveTrain driveTrain = new DriveTrain(m_arcadestick);
+	DriveTrain driveTrain = new DriveTrain(m_drivestick);
 		
 	@Override
 	public void robotInit() {
@@ -55,8 +56,9 @@ public class Robot extends IterativeRobot {
 		
 	@Override
 	public void teleopPeriodic() {
-		DriveTrain.drive(m_arcadestick.getY(), -m_arcadestick.getZ());
+		DriveTrain.drive(m_drivestick.getY(), -m_drivestick.getZ());
 		DriveTrain.ShiftGears();
+		
 	}
 
 	@Override
