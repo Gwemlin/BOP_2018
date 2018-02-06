@@ -24,7 +24,6 @@ public class Robot extends IterativeRobot {
 	private Timer m_timer = new Timer();
 
 	DriveTrain driveTrain = new DriveTrain(m_arcadestick);
-	
 		
 	@Override
 	public void robotInit() {
