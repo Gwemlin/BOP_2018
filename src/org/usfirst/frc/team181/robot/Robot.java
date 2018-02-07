@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		DriveTrain.drive(m_drivestick.getY(), -m_drivestick.getZ());
 		DriveTrain.ShiftGears();
-		
+		Elevator.elemethod(m_elevatorstick.getY());
 	}
 
 	@Override
