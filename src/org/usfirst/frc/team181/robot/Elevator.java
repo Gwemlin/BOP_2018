@@ -6,15 +6,13 @@ import edu.wpi.first.wpilibj.Spark;
 public class Elevator {
 	
 	static Spark m_elevator = new Spark(2);
-	static Spark m_elsparkDown = new Spark(6);
-	static Spark m_elsparkUP = new Spark(7);
 	
-	public static Joystick elevatorstick;
+	public static Joystick opstick;
 	
 	public Elevator(Joystick elevatorstick) {
-		Elevator.elevatorstick = elevatorstick;
+		Elevator.opstick = elevatorstick;
 	}
-
+	
 	public static void elemethod(double y) {
 		m_elevator.set(y);
 	}
