@@ -21,7 +21,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Robot extends IterativeRobot {
-	
+	//Defines variables
 	private Joystick m_drivestick = new Joystick(0);
 	private Joystick m_opstick = new Joystick(1);
 	private Timer m_timer = new Timer();
@@ -52,14 +52,21 @@ public class Robot extends IterativeRobot {
 
 	@Override
 	public void teleopInit() {
+		//Resets the wheel grippers to no movement
+		Gripper.wheelGripReset();
 	}
 	
 	@Override
 	public void teleopPeriodic() {
+		//Runs drive program, taking joystick input
 		DriveTrain.drive(-m_drivestick.getY(), -m_drivestick.getZ());
+		//Runs shift gear program
 		DriveTrain.ShiftGears();
+		//Runs the "Elemethod" program
 		Elevator.elemethod(-m_opstick.getY());
+		//Runs the Grip program
 		Gripper.Grip();
+		//Runs the wheel grip program
 		Gripper.wheelGrip();
 	}
 
