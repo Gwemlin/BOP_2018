@@ -51,9 +51,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopInit() {
 	}
-
 	
-		
 	@Override
 	public void teleopPeriodic() {
 		DriveTrain.drive(m_drivestick.getY(), -m_drivestick.getZ());
