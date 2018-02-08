@@ -60,6 +60,7 @@ public class Robot extends IterativeRobot {
 		DriveTrain.ShiftGears();
 		Elevator.elemethod(-m_opstick.getY());
 		Gripper.Grip();
+		Gripper.wheelGrip();
 	}
 
 	@Override
