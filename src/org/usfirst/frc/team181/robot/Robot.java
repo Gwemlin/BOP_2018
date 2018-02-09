@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
 	@Override
 	public void teleopPeriodic() {
 		//Runs drive program, taking joystick input
-		DriveTrain.drive(-m_drivestick.getY(), -m_drivestick.getZ());
+		DriveTrain.drive(-m_drivestick.getY(), m_drivestick.getZ());
 		//Runs shift gear program
 		DriveTrain.ShiftGears();
 		//Runs the "Elemethod" program

@@ -65,6 +65,19 @@ public class Gripper {
 		if(drivestick.getRawButtonReleased(3)) {	//if the "3" button released on the driver stick, run the program
 			wheelGripReset();	//run the "wheelGripReset" program
 		}
+		wheelGripReset();	//runs the "wheelGripReset" program
+		if(opstick.getRawButtonPressed(5)) {		//if the "5" button pressed on the driver stick, run the program
+			wheelGripIn();	//run the "wheelGripIn" program
+		}
+		if(opstick.getRawButtonReleased(5)) {	//if the "5" button released on the driver stick, run the program
+			wheelGripReset();	//run the "wheelGripReset" program
+		}
+		if(opstick.getRawButtonPressed(3)) {		//if the "3" button pressed on the driver stick, run the program
+			wheelGripOut();		//run the "wheelGripOut" program
+		}
+		if(opstick.getRawButtonReleased(3)) {	//if the "3" button released on the driver stick, run the program
+			wheelGripReset();	//run the "wheelGripReset" program
+		}
 	}
 	
 }
