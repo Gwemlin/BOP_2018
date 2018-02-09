@@ -12,7 +12,9 @@ public class Elevator {
 	public Elevator(Joystick elevatorstick) {
 		Elevator.opstick = elevatorstick;
 	}
+	
 	public static void elemethod(double y) {	//Defines the "Elemethod" program
 		m_elevator.set(y);	//sets the input for "elemethod" to the "y" for the Spark motor-controller
 	}
+	
 }

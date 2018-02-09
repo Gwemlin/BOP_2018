@@ -29,14 +29,16 @@ public class Robot extends IterativeRobot {
 	DriveTrain driveTrain = new DriveTrain(m_drivestick);
 		
 	@Override
-	public void robotInit() {
+	public void robotInit() {	
 		
 	}
+	
 	@Override
 	public void autonomousInit() {
 		m_timer.reset();
 		m_timer.start();
 	}
+	
 	@Override
 	public void autonomousPeriodic() {
 		// Drive for 2 seconds
@@ -46,11 +48,13 @@ public class Robot extends IterativeRobot {
 			DriveTrain.stop(); // stop robot
 		}
 	}
+	
 	@Override
 	public void teleopInit() {
 		//Resets the wheel grippers to no movement
 		Gripper.wheelGripReset();
 	}	
+	
 	@Override
 	public void teleopPeriodic() {
 		//Runs drive program, taking joystick input
@@ -64,7 +68,10 @@ public class Robot extends IterativeRobot {
 		//Runs the wheel grip program
 		Gripper.wheelGrip();
 	}
+	
 	@Override
 	public void testPeriodic() {
+		
 	}
+	
 }

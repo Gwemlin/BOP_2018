@@ -15,9 +15,11 @@ public class Gripper {
 	public static void startGrip() {
 		GripperSol.set(DoubleSolenoid.Value.kForward);	//moves solenoid forward
 	}
+	
 	public static void unGrip() {
 		GripperSol.set(DoubleSolenoid.Value.kReverse);	//moves solenoid backward
 	}
+	
 	public static void Grip() {
 		if(drivestick.getRawButton(2) == true) {	//if the "2" button pressed on the driver stick, run the program
 			startGrip();	//runs the "startGrip" program
@@ -36,15 +38,19 @@ public class Gripper {
 			System.out.println("Letting Go");
 		}
 	}
+	
 	public static void wheelGripReset() {
 		cubegrab.set(0);	//changes the movement of the cube-grabbing motor to zero
 	}
+	
 	public static void wheelGripIn() {
 		cubegrab.set(5);	//changes the movement of the cube-grabbing motor to forward
 	}
+	
 	public static void wheelGripOut() {
 		cubegrab.set(-5);	//changes the movement of the cube-grabbing motor to reverse
 	}
+	
 	public static void wheelGrip() {
 		wheelGripReset();	//runs the "wheelGripReset" program
 		if(drivestick.getRawButtonPressed(5)) {		//if the "5" button pressed on the driver stick, run the program
@@ -60,4 +66,5 @@ public class Gripper {
 			wheelGripReset();	//run the "wheelGripReset" program
 		}
 	}
+	
 }

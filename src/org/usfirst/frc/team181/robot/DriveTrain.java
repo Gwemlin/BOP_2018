@@ -22,17 +22,21 @@ public class DriveTrain {
 	public DriveTrain(Joystick arcadestick) {
 		DriveTrain.arcadestick = arcadestick;
 	}
+	
 	public static void stop() {
 		//Stops the motors
 		m_drive.stopMotor();
 	}
+	
 	public static void drive(double forward, double turn) {
 		//defines "drive" as an arcade drive program
 		m_drive.arcadeDrive(forward, turn);
 	}
+	
 	public static void resetEncoders() { 
 		
 	}
+	
 	public static void highGear() {
 		//Defines the "highGear" program
 		resetEncoders();
@@ -40,6 +44,7 @@ public class DriveTrain {
 		//doubleSolenoid.set(true);
 		resetEncoders();
 	}
+	
 	public static void lowGear() {
 		//Defines the "lowGear" program
 		resetEncoders();
@@ -47,6 +52,7 @@ public class DriveTrain {
 		//doubleSolenoid.set();
 		resetEncoders();
 	}	
+	
 	public static void ShiftGears() {
 		//If button 1 is pressed, and high gear is not yet enabled, run high gear method in DriveTrain class.
 		if(arcadestick.getRawButton(1) == true){
@@ -59,5 +65,5 @@ public class DriveTrain {
 			lowGear();
 			VarSolenoid.set(DoubleSolenoid.Value.kReverse);}
 	}
-
+	
 }
