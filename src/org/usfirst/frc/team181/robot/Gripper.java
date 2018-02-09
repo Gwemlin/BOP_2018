@@ -53,29 +53,29 @@ public class Gripper {
 	
 	public static void wheelGrip() {
 		wheelGripReset();	//runs the "wheelGripReset" program
-		if(drivestick.getRawButtonPressed(5)) {		//if the "5" button pressed on the driver stick, run the program
+		if(drivestick.getRawButton(5) == true) {		//if the "5" button pressed on the driver stick, run the program
 			wheelGripIn();	//run the "wheelGripIn" program
 		}
-		if(drivestick.getRawButtonReleased(5)) {	//if the "5" button released on the driver stick, run the program
+		if(drivestick.getRawButton(5) == false) {	//if the "5" button released on the driver stick, run the program
 			wheelGripReset();	//run the "wheelGripReset" program
 		}
-		if(drivestick.getRawButtonPressed(3)) {		//if the "3" button pressed on the driver stick, run the program
+		if(drivestick.getRawButton(3) == true) {		//if the "3" button pressed on the driver stick, run the program
 			wheelGripOut();		//run the "wheelGripOut" program
 		}
-		if(drivestick.getRawButtonReleased(3)) {	//if the "3" button released on the driver stick, run the program
+		if(drivestick.getRawButton(3) == false) {	//if the "3" button released on the driver stick, run the program
 			wheelGripReset();	//run the "wheelGripReset" program
 		}
 		wheelGripReset();	//runs the "wheelGripReset" program
-		if(opstick.getRawButtonPressed(5)) {		//if the "5" button pressed on the driver stick, run the program
+		if(opstick.getRawButton(5) == true) {		//if the "5" button pressed on the driver stick, run the program
 			wheelGripIn();	//run the "wheelGripIn" program
 		}
-		if(opstick.getRawButtonReleased(5)) {	//if the "5" button released on the driver stick, run the program
+		if(opstick.getRawButton(5) == false) {	//if the "5" button released on the driver stick, run the program
 			wheelGripReset();	//run the "wheelGripReset" program
 		}
-		if(opstick.getRawButtonPressed(3)) {		//if the "3" button pressed on the driver stick, run the program
+		if(opstick.getRawButton(3) == true) {		//if the "3" button pressed on the driver stick, run the program
 			wheelGripOut();		//run the "wheelGripOut" program
 		}
-		if(opstick.getRawButtonReleased(3)) {	//if the "3" button released on the driver stick, run the program
+		if(opstick.getRawButton(3) == false) {	//if the "3" button released on the driver stick, run the program
 			wheelGripReset();	//run the "wheelGripReset" program
 		}
 	}
