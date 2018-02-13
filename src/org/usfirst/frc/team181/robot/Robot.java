@@ -5,6 +5,8 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+//Programmed by Laila, Jadyn, Kaleb, and Gwen
+
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -19,24 +21,24 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
 
 public class Robot extends IterativeRobot {
-	
-	private Joystick m_arcadestick = new Joystick(0);
+	//Defines variables
+	private Joystick m_drivestick = new Joystick(0);
+	private Joystick m_opstick = new Joystick(1);
 	private Timer m_timer = new Timer();
 
-	DriveTrain driveTrain = new DriveTrain(m_arcadestick);
+	DriveTrain driveTrain = new DriveTrain(m_drivestick);
 		
 	@Override
-	public void robotInit() {
+	public void robotInit() {	
 		
 	}
-
-
+	
 	@Override
 	public void autonomousInit() {
 		m_timer.reset();
 		m_timer.start();
 	}
-
+	
 	@Override
 	public void autonomousPeriodic() {
 		// Drive for 2 seconds
@@ -46,20 +48,30 @@ public class Robot extends IterativeRobot {
 			DriveTrain.stop(); // stop robot
 		}
 	}
-
+	
 	@Override
 	public void teleopInit() {
-	}
-
+		//Resets the wheel grippers to no movement
+		Gripper.wheelGripReset();
+	}	
 	
-		
 	@Override
 	public void teleopPeriodic() {
-		DriveTrain.drive(m_arcadestick.getY(), -m_arcadestick.getZ());
+		//Runs drive program, taking joystick input
+		DriveTrain.drive(-m_drivestick.getY(), m_drivestick.getZ());
+		//Runs shift gear program
 		DriveTrain.ShiftGears();
+		//Runs the "Elemethod" program
+		Elevator.elemethod(-m_opstick.getY());
+		//Runs the Grip program
+		Gripper.Grip();
+		//Runs the wheel grip program
+		Gripper.wheelGrip();
 	}
-
+	
 	@Override
 	public void testPeriodic() {
+		
 	}
+	
 }
