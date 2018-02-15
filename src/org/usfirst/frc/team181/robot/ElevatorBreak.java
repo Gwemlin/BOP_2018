@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Joystick;
 
 public class ElevatorBreak {
-	static DoubleSolenoid BrakeSol = new DoubleSolenoid(4,5);
+	static DoubleSolenoid BrakeSol = new DoubleSolenoid(0,4,5);
 	static Joystick opstick = new Joystick(1);
 	
 	public static void brakeOn() {
@@ -12,7 +12,7 @@ public class ElevatorBreak {
 	}
 	
 	public static void brakeOff() {
-		BrakeSol.set(DoubleSolenoid.Value.kOff);
+		BrakeSol.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public static void Brake() {

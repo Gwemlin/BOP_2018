@@ -14,11 +14,11 @@ public class Gripper {
 	static VictorSP cubegrab = new VictorSP(3);
 	
 	public static void startGrip() {
-		GripperSol.set(DoubleSolenoid.Value.kForward);	//moves solenoid forward
+		GripperSol.set(DoubleSolenoid.Value.kReverse);	//moves solenoid forward
 	}
 	
 	public static void unGrip() {
-		GripperSol.set(DoubleSolenoid.Value.kReverse);	//moves solenoid backward
+		GripperSol.set(DoubleSolenoid.Value.kForward);	//moves solenoid backward
 	}
 	
 	public static void Grip() {
