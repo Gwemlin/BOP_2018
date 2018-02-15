@@ -1,12 +1,12 @@
 // created by Evan Belcourt in 2018
 package org.usfirst.frc.team181.robot;
 
-import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Timer;
+/*import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import edu.wpi.first.wpilibj.Timer;
-
+*/
 
 public class Autonomous {
 	
