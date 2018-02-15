@@ -65,6 +65,5 @@ public class Gripper {
 			wheelGripReset();	//run the "wheelGripReset" program
 		}
 	}
-	//bdbaycgebuwjgeb;oho
 	
 }
