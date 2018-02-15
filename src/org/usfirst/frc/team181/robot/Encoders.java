@@ -2,6 +2,7 @@
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Encoders {
@@ -11,6 +12,8 @@ public class Encoders {
 	static Encoder encoderR = new Encoder(0,1,false, Encoder.EncodingType.k4X);
 	static Encoder encoderL = new Encoder(2,3, false, Encoder.EncodingType.k4X);
 	static Encoder encoderElevator = new Encoder(4,5, false,Encoder.EncodingType.k4X);
+	
+	static Joystick opstick = new Joystick(1);
 	
 		public Encoders(){
 			encoderR.setDistancePerPulse(distancePerPulse);
@@ -34,6 +37,12 @@ public class Encoders {
 			encoderL.reset();
 			encoderR.reset();
 			encoderElevator.reset();			
+		}
+		//tests if the encoders hooked up and should print the encoder reading to dashboard
+		public static void testEncoder() {
+			if(opstick.getRawButton(11)==true) {
+				System.out.println(readEncoderR());
+			}
 		}
 }
 	
