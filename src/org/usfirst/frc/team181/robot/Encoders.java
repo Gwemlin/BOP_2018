@@ -2,7 +2,7 @@
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
+//import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Encoders {
 	
