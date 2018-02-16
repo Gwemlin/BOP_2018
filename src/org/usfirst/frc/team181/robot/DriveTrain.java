@@ -58,13 +58,12 @@ public class DriveTrain {
 		//If button 1 is pressed, and high gear is not yet enabled, run high gear method in DriveTrain class.
 		if(arcadestick.getRawButton(1) == true){
 			System.out.println("Engaging High Gear!");
-			highGear();
-			VarSolenoid.set(DoubleSolenoid.Value.kForward);			
+			highGear();			
 		}
 		else{
 			System.out.println("Going to Low Gear!");
 			lowGear();
-			VarSolenoid.set(DoubleSolenoid.Value.kReverse);}
+			}
 	}
 	
 }

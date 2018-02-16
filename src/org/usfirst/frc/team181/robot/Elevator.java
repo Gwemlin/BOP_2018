@@ -30,11 +30,11 @@ public class Elevator {
 	}
 	
 	public static void Brake() {
-		if(opstick.getRawButtonPressed(1) == true && opstick.getRawButton(4) == false) {
+		if(opstick.getRawButton(1) == true) {
 			brakeOn();
 			System.out.println("Brake Engaged!");
 		}
-		if(opstick.getRawButtonPressed(4) == true && opstick.getRawButton(1) == true) {
+		if(opstick.getRawButton(4) == true) {
 			brakeOff();
 			System.out.println("Brake Disengaged!");
 		}
