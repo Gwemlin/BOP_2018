@@ -12,11 +12,7 @@ public class Elevator {
 	static DoubleSolenoid BrakeSol = new DoubleSolenoid(0,4,5);
 
 	public static Joystick opstick = new Joystick (1);
-	
-	private static double yValue = opstick.getY();
-	
-	//public static 
-		
+
 	public Elevator(Joystick opstick) {
 		Elevator.opstick = opstick;
 	}
@@ -39,16 +35,12 @@ public class Elevator {
 	}	
 	
 	public static void Brake() {
+		double yValue = opstick.getY();
 		Boolean yChange = (yValue != 0);
-		if(yChange == true || opstick.getRawButton(1)==true) {
+		if(yChange == true) {
 			brakeOff();
 		}
-		/*
-		else if(opstick.getRawButton(1)==true) {
-			brakeOff();			
-		}
-		*/
-		else{
+		else {
 			brakeOn();
 		}
 	

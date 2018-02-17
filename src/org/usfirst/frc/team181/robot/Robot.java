@@ -61,6 +61,7 @@ public class Robot extends IterativeRobot {
 		DriveTrain.drive(-m_drivestick.getY(), m_drivestick.getZ());
 		//Runs shift gear program
 		DriveTrain.ShiftGears();
+		Elevator.Brake();
 		//Runs the "Elemethod" program
 		Elevator.elemethod(m_opstick.getY());
 		//Runs the Grip program
@@ -68,7 +69,6 @@ public class Robot extends IterativeRobot {
 		//Runs the wheel grip program
 		Gripper.wheelGrip();
 		//Runs the Elevator Brake
-		Elevator.Brake();
 	}
 	
 	@Override
