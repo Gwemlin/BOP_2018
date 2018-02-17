@@ -68,7 +68,7 @@ public class Robot extends IterativeRobot {
 		//Runs the wheel grip program
 		Gripper.wheelGrip();
 		//Runs the Elevator Brake
-		Elevator.Brake();
+		//Elevator.Brake();
 	}
 	
 	@Override

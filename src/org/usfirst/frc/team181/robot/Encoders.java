@@ -1,4 +1,4 @@
-// made By Evan and Matt in 2018
+// made By Evan Belcourt and Matthew Shelto in 2018
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.Encoder;

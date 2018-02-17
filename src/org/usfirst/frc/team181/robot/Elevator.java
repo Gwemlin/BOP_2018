@@ -1,4 +1,4 @@
-//Created by Gwen 2018
+//Created by Gwen and Laila 2018
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -13,34 +13,36 @@ public class Elevator {
 
 	public static Joystick opstick;
 	
-	public Elevator(Joystick elevatorstick) {
-		Elevator.opstick = elevatorstick;
+	public Elevator(Joystick opstick) {
+		Elevator.opstick = opstick;
 	}
 	
 	public static void elemethod(double y) {	//Defines the "Elemethod" program
 		m_elevator.set(y);	//sets the input for "elemethod" to the "y" for the Spark motor-controller
 	}
 	
+	public static void resetEncoders() { 
+		
+	}
+	
 	public static void brakeOn() {
-		BrakeSol.set(DoubleSolenoid.Value.kForward);
+		BrakeSol.set(DoubleSolenoid.Value.kForward);		//moves the solenoids forward
+
 	}
 	
 	public static void brakeOff() {
-		BrakeSol.set(DoubleSolenoid.Value.kReverse);
+		BrakeSol.set(DoubleSolenoid.Value.kReverse);		//moves the solenoids backward
+	}	
+	public static void Brake() {
+		if(opstick.getRawButton(1)==true) { 	//Currently Broken?
+			brakeOn();			
+		}
+		else{
+			brakeOff();
+		}
+	
 	}
 	
-	public static void Brake() {
-		if(opstick.getRawButton(1) == true && (opstick.getRawButton(4) == false)) {
-			brakeOn();
-			System.out.println("Brake Engaged!");
-		}
-		if(opstick.getRawButton(4) == true && (opstick.getRawButton(1) == false)) {
-			brakeOff();
-			System.out.println("Brake Disengaged!");
-		}
-		
-	}
-
 }
 
 
