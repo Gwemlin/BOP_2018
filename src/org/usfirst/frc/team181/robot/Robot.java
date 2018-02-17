@@ -61,14 +61,14 @@ public class Robot extends IterativeRobot {
 		DriveTrain.drive(-m_drivestick.getY(), m_drivestick.getZ());
 		//Runs shift gear program
 		DriveTrain.ShiftGears();
-		//Runs the "Elemethod" program
+		//Runs the "Elemethod" program	]
 		Elevator.elemethod(m_opstick.getY());
 		//Runs the Grip program
 		Gripper.Grip();
 		//Runs the wheel grip program
 		Gripper.wheelGrip();
-		//Runs the Elevator Brake
-		Elevator.Brake();
+		//Runs the encoder test
+		Encoders.testEncoder();
 	}
 	
 	@Override

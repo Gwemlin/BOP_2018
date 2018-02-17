@@ -42,6 +42,7 @@ public class Encoders {
 		public static void testEncoder() {
 			if(opstick.getRawButton(11)==true) {
 				System.out.println(readEncoderR());
+		
 			}
 		}
 }
