@@ -37,10 +37,20 @@ public class Elevator {
 	public static void Brake() {
 		double yValue = opstick.getY();
 		Boolean yChange = (yValue != 0);
+		Boolean manBrake = false;
 		if(yChange == true) {
 			brakeOff();
+			manBrake = false;
 		}
-		else {
+		if(opstick.getRawButton(1) == true) {
+			brakeOff();
+			manBrake = false;
+		}
+		if(opstick.getRawButton(4) == true) {
+			brakeOn();
+			manBrake = true;
+		}
+		if(yChange == false && manBrake == false) {
 			brakeOn();
 		}
 	
