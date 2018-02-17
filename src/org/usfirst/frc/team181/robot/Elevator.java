@@ -11,8 +11,12 @@ public class Elevator {
 	
 	static DoubleSolenoid BrakeSol = new DoubleSolenoid(0,4,5);
 
-	public static Joystick opstick;
+	public static Joystick opstick = new Joystick (1);
 	
+	private static double yValue = opstick.getY();
+	
+	//public static 
+		
 	public Elevator(Joystick opstick) {
 		Elevator.opstick = opstick;
 	}
@@ -33,16 +37,23 @@ public class Elevator {
 	public static void brakeOff() {
 		BrakeSol.set(DoubleSolenoid.Value.kReverse);		//moves the solenoids backward
 	}	
+	
 	public static void Brake() {
-		if(opstick.getRawButton(1)==true) { 	//Currently Broken?
-			brakeOn();			
-		}
-		else{
+		Boolean yChange = (yValue != 0);
+		if(yChange == true || opstick.getRawButton(1)==true) {
 			brakeOff();
+		}
+		/*
+		else if(opstick.getRawButton(1)==true) {
+			brakeOff();			
+		}
+		*/
+		else{
+			brakeOn();
 		}
 	
 	}
-	
+
 }
 
 
