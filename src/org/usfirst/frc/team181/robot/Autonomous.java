@@ -15,7 +15,7 @@ public class Autonomous {
 		
 		DriveTrain.drive(0.5,1);
 		
-			// Drive for 2 seconds
+		// Drive for 2 seconds
 		if (m_autotimer.get() < 2.0) {
 			DriveTrain.drive(0.5, 0.0); // drive forwards half speed
 		} 
