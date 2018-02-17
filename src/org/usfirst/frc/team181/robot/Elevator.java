@@ -37,7 +37,7 @@ public class Elevator {
 	public static void Brake() {
 		double yValue = opstick.getY();
 		Boolean yChange = (yValue != 0);
-		Boolean manBrake = false;
+		Boolean manBrake = true;
 		if(yChange == true) {
 			brakeOff();
 			manBrake = false;
