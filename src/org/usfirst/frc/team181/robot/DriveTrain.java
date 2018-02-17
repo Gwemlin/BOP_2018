@@ -2,7 +2,9 @@
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
+
+//import edu.wpi.first.wpilibj.Encoder;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -15,8 +17,9 @@ public class DriveTrain {
 	static VictorSP m_frontRight = new VictorSP(0);
 	
 	private static DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
-	static Encoder leftEncoder = new Encoder(2, 1, true, Encoder.EncodingType.k4X);
-	static Encoder rightEncoder = new Encoder(0, 3, false, Encoder.EncodingType.k4X);
+	
+	//static Encoder leftEncoder = new Encoder(2, 1, true, Encoder.EncodingType.k4X);
+	//static Encoder rightEncoder = new Encoder(0, 3, false, Encoder.EncodingType.k4X);
 	
 	private static Joystick arcadestick;
 	
