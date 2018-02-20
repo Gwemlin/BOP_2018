@@ -38,6 +38,7 @@ public class Elevator {
 	}	
 	
 	public static void autoBrake() {
+		
 		double yValue = opstick.getY();
 		Boolean yChange = ((yValue < -0.05) || (yValue > 0.05));
 		//Auto Brake disable
@@ -92,9 +93,10 @@ public class Elevator {
 		if(autoToggle == false) {
 			manBrake();
 		}
-
-	}
-
+			
+			
+		}
+		
 }
 
 

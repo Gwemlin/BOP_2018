@@ -1,7 +1,9 @@
+
 // made By Evan Belcourt and Matthew Shelto in 2018
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.Encoder;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.DoubleSolenoid;
 
@@ -44,6 +46,15 @@ public class Encoders {
 				System.out.println(readEncoderR());
 		
 			}
+		}
+
+		public static Object getencoderL() { 
+		//Calling distance of encoderL
+			return encoderL.getDistance();
+		}
+		public static Object getencoderR() {
+		//Calling distance of encoderR
+			return encoderR.getDistance();	
 		}
 }
 	

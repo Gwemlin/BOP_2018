@@ -16,9 +16,11 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 //import edu.wpi.first.wpilibj.SendableBase;
 //import edu.wpi.first.wpilibj.SolenoidBase;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Sendable;
 //import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 //import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 	//Defines variables
@@ -73,11 +75,12 @@ public class Robot extends IterativeRobot {
 		Gripper.wheelGrip();
 		//Runs the encoder test
 		Encoders.testEncoder();
+		SmartDashboard.putBoolean("Encoders", Encoders.getencoderL());
+		
 	}
 	
 	@Override
 	public void testPeriodic() {
 		
-	}
-	
+	}	
 }
