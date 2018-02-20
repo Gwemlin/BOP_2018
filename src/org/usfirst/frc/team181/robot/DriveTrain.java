@@ -3,7 +3,7 @@ package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
-//import edu.wpi.first.wpilibj.Encoder;
+//import e du.wpi.first.wpilibj.Encoder;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.VictorSP;

@@ -61,6 +61,10 @@ public class Robot extends IterativeRobot {
 		DriveTrain.drive(-m_drivestick.getY(), m_drivestick.getZ());
 		//Runs shift gear program
 		DriveTrain.ShiftGears();
+		//Runs the AutoBrake toggle program
+		Elevator.autoToggleDef();
+		//Runs the Brake program
+		Elevator.brake();
 		//Runs the "Elemethod" program	]
 		Elevator.elemethod(m_opstick.getY());
 		//Runs the Grip program

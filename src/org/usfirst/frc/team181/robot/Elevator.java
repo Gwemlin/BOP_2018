@@ -12,6 +12,9 @@ public class Elevator {
 	static DoubleSolenoid BrakeSol = new DoubleSolenoid(0,4,5);
 
 	public static Joystick opstick = new Joystick (1);
+	
+	static Boolean manBrake = false;
+	static Boolean autoToggle = true;
 
 	public Elevator(Joystick opstick) {
 		Elevator.opstick = opstick;
@@ -34,26 +37,62 @@ public class Elevator {
 		BrakeSol.set(DoubleSolenoid.Value.kReverse);		//moves the solenoids backward
 	}	
 	
-	public static void Brake() {
+	public static void autoBrake() {
 		double yValue = opstick.getY();
-		Boolean yChange = ((yValue != 0) && (yValue != -1) && (yValue != 1));
-		Boolean manBrake = true;
+		Boolean yChange = ((yValue < -0.05) || (yValue > 0.05));
+		//Auto Brake disable
 		if(yChange == true) {
 			brakeOff();
-			manBrake = false;
+			System.out.println("Releasing Brake");
 		}
-		if(opstick.getRawButton(1) == true) {
-			brakeOff();
-			manBrake = false;
-		}
-		if(opstick.getRawButton(4) == true) {
+		//Auto Brake enable
+		if(yChange == false) {
 			brakeOn();
+			System.out.println("Engaging Brake");
+		}
+	}
+	
+	public static void manBrake() {
+		//Manual Brake Release
+		if(opstick.getRawButton(1) == true && manBrake == true) {
+			brakeOff();
+			System.out.println("Releasing Brake");
+			manBrake = false;
+		}
+		//Manual Brake Close
+		if(opstick.getRawButton(1) == true && manBrake == false) {
+			brakeOn();
+			System.out.println("Engaging Brake");
 			manBrake = true;
 		}
-		if(yChange == false && manBrake == false) {
-			brakeOn();
-		}
+
+	}
 	
+	public static void autoToggleDef() {
+		if(opstick.getRawButton(6) == true && autoToggle == true) {
+			autoToggle = false;
+			System.out.println("Manual Enabled");
+		}
+		if(opstick.getRawButton(6) == true && autoToggle == false) {
+			autoToggle = true;
+			System.out.println("Automatic Enabled");
+		}
+		if(opstick.getRawButton(6) == false && autoToggle == true) {
+			System.out.println("Automatic Enabled");
+		}
+		if(opstick.getRawButton(6) == false && autoToggle == false) {
+			System.out.println("Manual Enabled");
+		}
+	}
+	
+	public static void brake() {
+		if(autoToggle == true) {
+			autoBrake();
+		}
+		if(autoToggle == false) {
+			manBrake();
+		}
+
 	}
 
 }
