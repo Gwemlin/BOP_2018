@@ -14,7 +14,7 @@ public class Elevator {
 	public static Joystick opstick = new Joystick (1);
 	
 	static Boolean manBrake = false;
-	static Boolean autoToggle = true;
+	static Boolean modeToggle = true;
 
 	public Elevator(Joystick opstick) {
 		Elevator.opstick = opstick;
@@ -69,29 +69,31 @@ public class Elevator {
 
 	}
 	
-	public static void autoToggleDef() {
-		if(opstick.getRawButton(6) == true && autoToggle == true) {
-			autoToggle = false;
-			System.out.println("Manual Enabled");
+	public static void brakeModeToggle() {
+		if (modeToggle == true) {
+			modeToggle = false;
+			System.out.println("Manual-Brake Enabled");
 		}
-		if(opstick.getRawButton(6) == true && autoToggle == false) {
-			autoToggle = true;
-			System.out.println("Automatic Enabled");
-		}
-		if(opstick.getRawButton(6) == false && autoToggle == true) {
-			System.out.println("Automatic Enabled");
-		}
-		if(opstick.getRawButton(6) == false && autoToggle == false) {
-			System.out.println("Manual Enabled");
+		else {
+			modeToggle = true;
+			System.out.println("Auto-Brake Enabled");
 		}
 	}
 	
-	public static void brake() {
-		if(autoToggle == true) {
-			autoBrake();
+	
+	public static void autoToggleDef() {
+		if(opstick.getRawButtonPressed(6) == true) {
+			brakeModeToggle();
 		}
-		if(autoToggle == false) {
+
+	}
+	
+	public static void brake() {
+		if(modeToggle == false) {
 			manBrake();
+		}
+		else {
+			autoBrake();
 		}
 			
 			
