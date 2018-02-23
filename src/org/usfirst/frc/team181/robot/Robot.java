@@ -75,7 +75,7 @@ public class Robot extends IterativeRobot {
 		Gripper.wheelGrip();
 		//Runs the encoder test
 		Encoders.testEncoder();
-		SmartDashboard.putBoolean("Encoders", Encoders.getencoderL());
+		SmartDashboard.putBoolean("Encoders", (boolean) Encoders.getencoderL());
 		
 	}
 	
