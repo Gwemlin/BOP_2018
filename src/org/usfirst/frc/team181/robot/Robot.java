@@ -16,11 +16,11 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 //import edu.wpi.first.wpilibj.SendableBase;
 //import edu.wpi.first.wpilibj.SolenoidBase;
 import edu.wpi.first.wpilibj.Joystick;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 //import edu.wpi.first.wpilibj.Sendable;
 //import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 //import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends IterativeRobot {
 	//Defines variables
@@ -63,8 +63,6 @@ public class Robot extends IterativeRobot {
 		DriveTrain.drive(-m_drivestick.getY(), m_drivestick.getZ());
 		//Runs shift gear program
 		DriveTrain.ShiftGears();
-		//Runs the AutoBrake toggle program
-		Elevator.autoToggleDef();
 		//Runs the Brake program
 		Elevator.brake();
 		//Runs the "Elemethod" program	]
@@ -75,7 +73,7 @@ public class Robot extends IterativeRobot {
 		Gripper.wheelGrip();
 		//Runs the encoder test
 		Encoders.testEncoder();
-		SmartDashboard.putBoolean("Encoders", (boolean) Encoders.getencoderL());
+		//SmartDashboard.putBoolean("Encoders", (boolean) Encoders.getencoderL());
 		
 	}
 	

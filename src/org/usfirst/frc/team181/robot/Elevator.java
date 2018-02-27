@@ -12,9 +12,6 @@ public class Elevator {
 	static DoubleSolenoid BrakeSol = new DoubleSolenoid(0,4,5);
 
 	public static Joystick opstick = new Joystick (1);
-	
-	static Boolean manBrake = false;
-	static Boolean modeToggle = true;
 
 	public Elevator(Joystick opstick) {
 		Elevator.opstick = opstick;
@@ -36,9 +33,8 @@ public class Elevator {
 	public static void brakeOff() {
 		BrakeSol.set(DoubleSolenoid.Value.kReverse);		//moves the solenoids backward
 	}	
-	
-	public static void autoBrake() {
-		
+
+	public static void brake() {
 		double yValue = opstick.getY();
 		Boolean yChange = ((yValue < -0.05) || (yValue > 0.05));
 		//Auto Brake disable
@@ -52,53 +48,6 @@ public class Elevator {
 			System.out.println("Engaging Brake");
 		}
 	}
-	
-	public static void manBrake() {
-		//Manual Brake Release
-		if(opstick.getRawButton(1) == true && manBrake == true) {
-			brakeOff();
-			System.out.println("Releasing Brake");
-			manBrake = false;
-		}
-		//Manual Brake Close
-		if(opstick.getRawButton(1) == true && manBrake == false) {
-			brakeOn();
-			System.out.println("Engaging Brake");
-			manBrake = true;
-		}
-
-	}
-	
-	public static void brakeModeToggle() {
-		if (modeToggle == true) {
-			modeToggle = false;
-			System.out.println("Manual-Brake Enabled");
-		}
-		else {
-			modeToggle = true;
-			System.out.println("Auto-Brake Enabled");
-		}
-	}
-	
-	
-	public static void autoToggleDef() {
-		if(opstick.getRawButtonPressed(6) == true) {
-			brakeModeToggle();
-		}
-
-	}
-	
-	public static void brake() {
-		if(modeToggle == false) {
-			manBrake();
-		}
-		else {
-			autoBrake();
-		}
-			
-			
-		}
-		
 }
 
 
