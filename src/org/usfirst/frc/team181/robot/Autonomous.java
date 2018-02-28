@@ -1,4 +1,4 @@
-// created by Evan Belcourt in 2018
+// created by Evan Belcourt , Gwen, and Laila in 2018
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -7,8 +7,13 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 */
+import edu.wpi.first.wpilibj.DriverStation;
 
 public class Autonomous {
+	
+	public static void setAlliance() {
+		
+	}
 	
 	public void crossLine() {
 		final Timer m_autotimer = new Timer();
@@ -23,4 +28,15 @@ public class Autonomous {
 			DriveTrain.stop(); // stop robot
 		}
 	}
+	
+	String gameData; {
+	gameData = DriverStation.getInstance().getGameSpecificMessage();
+            if(gameData.length() > 0)
+            {
+	  if(gameData.charAt(0) == 'L');
+		//Left auto code here
+	  } else if(gameData.charAt(0) == 'R'){
+		//Put right auto code here
+	  } 
+}
 }

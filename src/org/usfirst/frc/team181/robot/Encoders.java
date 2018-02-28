@@ -12,7 +12,25 @@ public class Encoders {
 	private double distancePerPulse = 0.05;
 	
 	static Encoder encoderR = new Encoder(0,1,false, Encoder.EncodingType.k4X);
+		int countR = encoderR.get();
+		double distanceR = encoderR.getRaw();
+		//double distance = encoderR.getDistance();
+		//double period = encoderR.getPeriod();
+		double rateR = encoderR.getRate();
+		boolean directionR = encoderR.getDirection();
+		boolean stoppedR = encoderR.getStopped();
+		//*/
 	static Encoder encoderL = new Encoder(2,3, false, Encoder.EncodingType.k4X);
+		///*
+		int countL = encoderL.get();
+		double distanceL = encoderL.getRaw();
+		//double distance = encoderL.getDistance();
+		//double period = encoderL.getPeriod();
+		double rateL = encoderL.getRate();
+		boolean directionL = encoderL.getDirection();
+		boolean stoppedL = encoderL.getStopped();
+		//*/
+			
 	static Encoder encoderElevator = new Encoder(4,5, false,Encoder.EncodingType.k4X);
 	
 	static Joystick opstick = new Joystick(1);
