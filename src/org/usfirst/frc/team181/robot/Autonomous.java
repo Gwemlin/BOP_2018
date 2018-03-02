@@ -1,8 +1,8 @@
 // created by Evan Belcourt , Gwen, and Laila in 2018
 package org.usfirst.frc.team181.robot;
 
-import edu.wpi.first.wpilibj.Timer;
-/*import edu.wpi.first.wpilibj.Encoder;
+/*import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
@@ -15,18 +15,16 @@ public class Autonomous {
 		
 	}
 	
-	public void crossLine() {
-		final Timer m_autotimer = new Timer();
+	public static void crossLine() {
+		//final Timer m_autotimer = new Timer();
 		
-		DriveTrain.drive(0.5,1);
+		UltraSensor.ultraDistance();
 		
-		// Drive for 2 seconds
-		if (m_autotimer.get() < 2.0) {
-			DriveTrain.drive(0.5, 0.0); // drive forwards half speed
-		} 
-		else {
-			DriveTrain.stop(); // stop robot
+		while(UltraSensor.distance < 0.04) {
+			DriveTrain.drive(0.5,1);
+			
 		}
+		
 	}
 	
 	String gameData; {

@@ -43,12 +43,15 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void autonomousPeriodic() {
+		Autonomous.crossLine();
+		/*
 		// Drive for 2 seconds
 		if (m_timer.get() < 2.0) {
 			DriveTrain.drive(0.5, 0.0); // drive forwards half speed
 		} else {
 			DriveTrain.stop(); // stop robot
 		}
+		*/
 	}
 	
 	@Override
@@ -79,6 +82,6 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void testPeriodic() {
-		
+		UltraSensor.ultraDistance();
 	}	
 }
