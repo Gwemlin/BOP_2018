@@ -15,26 +15,19 @@ public class Autonomous {
 		
 	}
 	
-	public static void crossLine() {
-		//final Timer m_autotimer = new Timer();
-		
-		UltraSensor.ultraDistance();
-		
-		while(UltraSensor.distance < 0.04) {
-			DriveTrain.drive(0.5,0);
+	public static void autoCode() {
+		String gameData; {
+			gameData = DriverStation.getInstance().getGameSpecificMessage();
+			if(gameData.length() > 0){
+				if(gameData.charAt(0) == 'L'); 
+				UltraSensor.ultraLeft();
+		  	} else if(gameData.charAt(0) == 'R'){
+		  		UltraSensor.ultraRight();
+			  } 
 			
 		}
 		
 	}
 	
-	String gameData; {
-	gameData = DriverStation.getInstance().getGameSpecificMessage();
-            if(gameData.length() > 0)
-            {
-	  if(gameData.charAt(0) == 'L');
-		//Left auto code here
-	  } else if(gameData.charAt(0) == 'R'){
-		//Put right auto code here
-	  } 
 }
-}
+

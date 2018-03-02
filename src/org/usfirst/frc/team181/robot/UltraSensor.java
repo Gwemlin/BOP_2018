@@ -12,8 +12,15 @@ public class UltraSensor {
 		distance = volts/12;
 	}
 	
-	public static void ultraDistance() {
+	public static void ultraLeft() {
 		calcDistance();
 		System.out.println(distance);
+		DriveTrain.drive(1,0);
+	}
+	
+	public static void ultraRight() {
+		calcDistance();
+		System.out.println(distance);
+		DriveTrain.drive(1,0);
 	}
 }
