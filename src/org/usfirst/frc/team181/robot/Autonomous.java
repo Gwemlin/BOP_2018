@@ -21,7 +21,7 @@ public class Autonomous {
 		UltraSensor.ultraDistance();
 		
 		while(UltraSensor.distance < 0.04) {
-			DriveTrain.drive(0.5,1);
+			DriveTrain.drive(0.5,0);
 			
 		}
 		
