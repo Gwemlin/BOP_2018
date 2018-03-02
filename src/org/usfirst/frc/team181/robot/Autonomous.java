@@ -20,9 +20,9 @@ public class Autonomous {
 			gameData = DriverStation.getInstance().getGameSpecificMessage();
 			if(gameData.length() > 0){
 				if(gameData.charAt(0) == 'L'); 
-				UltraSensor.ultraLeft();
-		  	} else if(gameData.charAt(0) == 'R'){
-		  		UltraSensor.ultraRight();
+					UltraSensor.ultraLeft();
+		  		} else if(gameData.charAt(0) == 'R'){
+		  			UltraSensor.ultraRight();
 			  } 
 			
 		}
