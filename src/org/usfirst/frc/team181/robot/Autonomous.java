@@ -15,7 +15,7 @@ public class Autonomous {
 		
 	}
 	
-	public static void autoCode() {
+	public static void autoSwitch() {
 		String gameData; {
 			gameData = DriverStation.getInstance().getGameSpecificMessage();
 			if(gameData.length() > 0){
@@ -27,6 +27,13 @@ public class Autonomous {
 			
 		}
 		
+	}
+	public static void autoCross() {
+		DriveTrain.drive(2, 0);
+		DriveTrain.drive(0, 90);
+		DriveTrain.drive(2,0);
+		DriveTrain.drive(0,-90);
+		DriveTrain.drive(2,0);
 	}
 	
 }

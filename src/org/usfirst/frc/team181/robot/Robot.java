@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void autonomousPeriodic() {
-		Autonomous.autoCode();
+		Autonomous.autoSwitch();
 		/*
 		// Drive for 2 seconds
 		if (m_timer.get() < 2.0) {
@@ -82,6 +82,6 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void testPeriodic() {
-		Autonomous.autoCode();
+		Autonomous.autoSwitch();
 	}	
 }
