@@ -20,9 +20,21 @@ public class Autonomous {
 			gameData = DriverStation.getInstance().getGameSpecificMessage();
 			if(gameData.length() > 0){
 				if(gameData.charAt(0) == 'L'); 
-					UltraSensor.ultraLeft();
+					DriveTrain.drive(2, 0);
+					DriveTrain.drive(0, -90);
+					DriveTrain.drive(2, 0);
+					DriveTrain.drive(0, 90);
+					DriveTrain.drive(2, 0);
+					Elevator.elemethod(4);
+					Gripper.wheelGripOut();
 		  		} else if(gameData.charAt(0) == 'R'){
-		  			UltraSensor.ultraRight();
+		  			DriveTrain.drive(2, 0);
+		  			DriveTrain.drive(0, 90);
+		  			DriveTrain.drive(2, 0);
+		  			DriveTrain.drive(0, -90);
+		  			DriveTrain.drive(2, 0);
+		  			Elevator.elemethod(4);
+		  			Gripper.wheelGripOut();
 			  } 
 			
 		}
