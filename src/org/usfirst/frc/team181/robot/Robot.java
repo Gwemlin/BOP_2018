@@ -10,40 +10,45 @@
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-//import edu.wpi.first.wpilibj.DoubleSolenoid;
-//import edu.wpi.first.wpilibj.Encoder;
-//import edu.wpi.first.wpilibj.GenericHID;
-//import edu.wpi.first.wpilibj.SendableBase;
-//import edu.wpi.first.wpilibj.SolenoidBase;
 import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-//import edu.wpi.first.wpilibj.Sendable;
-//import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-//import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import org.usfirst.frc.team181.robot.AutoCross;
+import org.usfirst.frc.team181.robot.AutoSwitch;
 
 public class Robot extends IterativeRobot {
 	//Defines variables
 	private Joystick m_drivestick = new Joystick(0);
 	private Joystick m_opstick = new Joystick(1);
 	private Timer m_timer = new Timer();
-
+	
+	static SendableChooser<Object> autoChooser;
+	Command autonomousCommand;
+	
 	DriveTrain driveTrain = new DriveTrain(m_drivestick);
 		
 	@Override
 	public void robotInit() {	
-		
+		autoChooser = new SendableChooser<Object>();
+		autoChooser.addDefault("Cross Line", new AutoCross());
+		autoChooser.addObject("Switch Deposit", new AutoSwitch());
+		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 	}
 	
 	@Override
 	public void autonomousInit() {
 		m_timer.reset();
 		m_timer.start();
+		autonomousCommand = (Command) autoChooser.getSelected();
+		autonomousCommand.start();
 	}
 	
 	@Override
 	public void autonomousPeriodic() {
-		Autonomous.autoSwitch();
+		Scheduler.getInstance().run();
 		/*
 		// Drive for 2 seconds
 		if (m_timer.get() < 2.0) {
