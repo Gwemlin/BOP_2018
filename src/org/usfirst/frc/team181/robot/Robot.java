@@ -11,48 +11,55 @@ package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Timer;
+//import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team181.robot.AutoCross;
 import org.usfirst.frc.team181.robot.AutoSwitch;
+//import org.usfirst.frc.team181.robot.Camera;
 
 public class Robot extends IterativeRobot {
 	//Defines variables
 	private Joystick m_drivestick = new Joystick(0);
 	private Joystick m_opstick = new Joystick(1);
-	private Timer m_timer = new Timer();
+	//private Timer m_timer = new Timer();
 	
 	static SendableChooser<Object> autoChooser;
-	Command autonomousCommand;
-	
-	DriveTrain driveTrain = new DriveTrain(m_drivestick);
+	public Command autonomousCommand;
 		
+	DriveTrain driveTrain = new DriveTrain(m_drivestick);
+	
 	@Override
 	public void robotInit() {	
 		autoChooser = new SendableChooser<Object>();
-		autoChooser.addDefault("Cross Line", new AutoCross());
-		autoChooser.addObject("Switch Deposit", new AutoSwitch());
+		autoChooser.addDefault("Do Nothing", new DoNothing());
+		autoChooser.addObject("Straight Drive", new AutoSwitch(AutoSwitch.Straight, AutoSwitch.fromMiddle));
+		autoChooser.addObject("Switch Deposit From Left", new AutoSwitch(AutoSwitch.Switch, AutoSwitch.fromLeft));
+		autoChooser.addObject("Switch Deposit From Right", new AutoSwitch(AutoSwitch.Switch, AutoSwitch.fromRight));
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
+		//SmartDashboard.putData("Camera", getCamera());
 	}
 	
 	@Override
 	public void autonomousInit() {
-		m_timer.reset();
-		m_timer.start();
+		//m_timer.reset();
+		//m_timer.start();
 		autonomousCommand = (Command) autoChooser.getSelected();
 		autonomousCommand.start();
+		Gripper.AutoGrip();
+		//Gripper.startGrip();
 	}
 	
 	@Override
 	public void autonomousPeriodic() {
+		//Gripper.startGrip();
+//		AutoSwitch.autoCode();
 		Scheduler.getInstance().run();
 		/*
 		// Drive for 2 seconds
-		if (m_timer.get() < 2.0) {
-			DriveTrain.drive(0.5, 0.0); // drive forwards half speed
+		if (m_timer.get() < 4.5) {
+			DriveTrain.drive(0.65, 0.0); // drive forwards half speed
 		} else {
 			DriveTrain.stop(); // stop robot
 		}
@@ -75,6 +82,8 @@ public class Robot extends IterativeRobot {
 		Elevator.brake();
 		//Runs the "Elemethod" program	]
 		Elevator.elemethod(m_opstick.getY());
+		//Runs the Grip Initialize code
+		Gripper.TransferGrip();
 		//Runs the Grip program
 		Gripper.Grip();
 		//Runs the wheel grip program
@@ -82,6 +91,7 @@ public class Robot extends IterativeRobot {
 		//Runs the encoder test
 		Encoders.testEncoder();
 		//SmartDashboard.putBoolean("Encoders", (boolean) Encoders.getencoderL());
+		//Camera.camera();
 		
 	}
 	

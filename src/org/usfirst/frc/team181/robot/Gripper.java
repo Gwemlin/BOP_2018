@@ -1,4 +1,4 @@
-//Created by Gwen 2018
+//Created by Gwen Miller 2018
 package org.usfirst.frc.team181.robot;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -13,25 +13,33 @@ public class Gripper {
 	
 	static VictorSP cubegrab = new VictorSP(3);
 	
+	static boolean GripAuto = true;
+	
+	public static void AutoGrip() {
+		GripAuto = true;
+	}
+	
+	public static void TransferGrip() {
+		if(drivestick.getRawButton(2) == true || opstick.getRawButton(2) == true) {
+			GripAuto = false;
+		}
+	}
+	
 	public static void startGrip() {
 		GripperSol.set(DoubleSolenoid.Value.kReverse);	//moves solenoid forward
 	}
 	
 	public static void unGrip() {
-		GripperSol.set(DoubleSolenoid.Value.kForward);	//moves solenoid backward
+		GripperSol.set(DoubleSolenoid.Value.kForward);	//moves solenoid backwards
 	}
 	
 	public static void Grip() {
-		if(drivestick.getRawButton(2) == true && opstick.getRawButton(2) == false) {	//if the "2" button pressed on the driver stick, run the program
-			startGrip();	//runs the "startGrip" program
-			System.out.println("Gripping");
-		}
-		if(drivestick.getRawButton(2) == false && opstick.getRawButton(2) == false) {	//if the "2" button released on the driver stick, run the program
-			unGrip();	//runs the "unGrip" program
+		if(drivestick.getRawButton(2) == true || opstick.getRawButton(2) == true) {	//if the "2" button pressed on the driver stick, run the program
+			startGrip();	//runs the "unGrip" program
 			System.out.println("Letting Go");
 		}
-		if(opstick.getRawButton(2) == true && drivestick.getRawButton(2) == false) {	//if the "2" button pressed on the operator stick, run the program
-			startGrip();	//runs the "startGip" program
+		else if(drivestick.getRawButton(2) == false && opstick.getRawButton(2) == false  && GripAuto == false) {	//if the "2" button released on the driver stick, run the program
+			unGrip();	//runs the "startGrip" program
 			System.out.println("Gripping");
 		}
 	}

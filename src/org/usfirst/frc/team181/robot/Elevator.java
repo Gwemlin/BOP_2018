@@ -20,7 +20,7 @@ public class Elevator {
 	public static void elemethod(double y) {	//Defines the "Elemethod" program
 		m_elevator.set(y);	//sets the input for "elemethod" to the "y" for the Spark motor-controller
 	}
-	
+		
 	public static void resetEncoders() { 
 		
 	}

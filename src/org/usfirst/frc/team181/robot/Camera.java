@@ -11,7 +11,7 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 
 public class Camera extends Thread {
-	//Public non-changable variables telling Camera dimentions.
+	//Public non-changable variables telling Camera dimensions.
 	public static final int IMG_WIDTH = 240;
 	public static final int IMG_HEIGHT = 480;
 	
