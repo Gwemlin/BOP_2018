@@ -37,6 +37,9 @@ public class Robot extends IterativeRobot {
 		autoChooser.addObject("Straight Drive", new AutoSwitch(AutoSwitch.Straight, AutoSwitch.fromMiddle));
 		autoChooser.addObject("Switch Deposit From Left", new AutoSwitch(AutoSwitch.Switch, AutoSwitch.fromLeft));
 		autoChooser.addObject("Switch Deposit From Right", new AutoSwitch(AutoSwitch.Switch, AutoSwitch.fromRight));
+		autoChooser.addObject("Scale Deposit From Left", new AutoScale(AutoScale.fromLeft));
+		autoChooser.addObject("Scale Deposit From Right", new AutoScale(AutoScale.fromRight));
+
 		SmartDashboard.putData("Autonomous Chooser", autoChooser);
 		//SmartDashboard.putData("Camera", getCamera());
 	}
@@ -53,17 +56,7 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void autonomousPeriodic() {
-		//Gripper.startGrip();
-//		AutoSwitch.autoCode();
 		Scheduler.getInstance().run();
-		/*
-		// Drive for 2 seconds
-		if (m_timer.get() < 4.5) {
-			DriveTrain.drive(0.65, 0.0); // drive forwards half speed
-		} else {
-			DriveTrain.stop(); // stop robot
-		}
-		*/
 	}
 	
 	@Override
@@ -97,6 +90,6 @@ public class Robot extends IterativeRobot {
 	
 	@Override
 	public void testPeriodic() {
-		Autonomous.autoSwitch();
+		UltraSensor.calcDistance();
 	}	
 }
